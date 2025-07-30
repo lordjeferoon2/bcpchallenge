@@ -1,0 +1,71 @@
+# Entornos virtuales
+venv/
+.env
+*.env
+
+# Archivos de configuración locales
+.env.*
+*.local
+secrets.*
+
+# Compilaciones
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyc
+
+# Archivos de log
+*.log
+
+# Archivos de bases de datos
+*.sqlite3
+
+# PyInstaller
+*.spec
+dist/
+build/
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Archivos de sistema
+Thumbs.db
+ehthumbs.db
+
+# Archivos de datos
+data/
+*.csv
+*.json
+
+# Azure Deployment Artifacts
+.azure/
+*.zip
+
+# Jupyter notebooks (si aplicara)
+.ipynb_checkpoints/
+
+# Coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+.cache
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# fastapi dev static files
+static/
+
+# Documentación generada
+/site
+docs/_build/
