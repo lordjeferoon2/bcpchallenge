@@ -1,6 +1,7 @@
 # app/services/conversation_service.py
 
 from app.prompts.customer_prompt import (
+    detect_intent_prompt,
     extract_customer_id_prompt,
     generate_financial_analysis_prompt,
     get_greeting_response_prompt
@@ -54,9 +55,24 @@ def handle_user_message(message: str, session_id: str) -> str:
 
     # STAGE 3: Evaluación ya realizada, conversación continua
     elif stage == "evaluation_ready":
-        if any(p in message.lower() for p in ["gracias", "ok", "listo", "perfecto"]):
-            return "¡Con gusto! Si deseas volver a revisar tu información financiera o tienes alguna otra consulta, solo dime."
+        # Pedimos al modelo que detecte la intención
+        intent_prompt = detect_intent_prompt(message)
+        intent = get_response_from_model(intent_prompt).strip().lower()
 
+        if intent == "despedida":
+            return "¡Gracias por conversar! Si necesitas algo más, no dudes en volver."
+
+        if intent in ["saludo", "reinicio"]:
+            # Reiniciar sesión
+            session_states[session_id] = {
+                "stage": "greeting",
+                "customer_id": None
+            }
+            greeting_prompt = get_greeting_response_prompt(message)
+            greeting = get_response_from_model(greeting_prompt)
+            return f"{greeting} ¿Podrías indicarme tu código de cliente?"
+
+        # Default
         return "Ya tengo tu información financiera registrada. ¿Deseas que revisemos algo más o necesitas ayuda adicional?"
 
     # Fallback

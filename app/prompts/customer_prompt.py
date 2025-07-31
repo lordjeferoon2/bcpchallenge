@@ -22,6 +22,20 @@ Devuelve solo el código exacto, sin explicación adicional.
 Si no hay ningún código, responde solo con la palabra: "NO_ENCONTRADO".
 """
 
+def detect_intent_prompt(message: str) -> str:
+    return f"""
+Dado el siguiente mensaje de un usuario: "{message}"
+
+Indica solo una palabra que representa su intención. Las opciones posibles son:
+- saludo
+- despedida
+- reinicio
+- pregunta
+- sin_intencion
+
+Responde con una sola palabra de las anteriores.
+"""
+
 # Prompt para generar el análisis financiero completo de un cliente
 def generate_financial_analysis_prompt(customer: dict) -> str:
     loans = customer.get("loans", [])
@@ -77,5 +91,5 @@ Eres un asistente financiero bancario con acceso a inteligencia artificial gener
 
 3. Cierra el informe con una **recomendación clara y amigable**, escrita en un lenguaje fácil de entender para el cliente, resaltando cuál opción sería más beneficiosa y por qué.
 
-Sé detallado, preciso y didáctico, como si le explicaras al cliente su situación y opciones de forma empática y profesional.
+Sé detallado, preciso y didáctico, como si le explicaras al cliente su situación y opciones de forma empática y profesional, no sobrepases de 500.
 """
