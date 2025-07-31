@@ -63,13 +63,14 @@ Crea un archivo `.env` en la raíz del proyecto y añade lo siguiente:
 
 ```env
 # Azure Blob Storage
-AZURE_OPENAI_API_KEY=https://<nombre-cuenta>.blob.core.windows.net/<nombre-contenedor>?<token-SAS>
+AZURE_BLOB_BASE_URL=
 
 # OpenAI
-OPENAI_API_KEY=sk-...
-AZURE_OPENAI_ENDPOINT=https://<nombre>.openai.azure.com/
-OPENAI_DEPLOYMENT_ID=gpt-4
-AZURE_OPENAI_MODEL=gpt-4
+AZURE_OPENAI_API_KEY=
+AZURE_OPENAI_ENDPOINT=
+AZURE_OPENAI_DEPLOYMENT_NAME=
+AZURE_OPENAI_API_VERSION=
+
 ```
 
 > Puedes generar el token SAS desde el portal de Azure en tu contenedor.
@@ -98,7 +99,8 @@ Body (JSON):
 
 ```json
 {
-  "message": "Quiero un análisis financiero"
+  "message": "Quiero un análisis financiero",
+  "session_id": "session_id"
 }
 ```
 
@@ -120,35 +122,5 @@ bcpchallenge/
 ├── requirements.txt           # Dependencias del proyecto
 └── README.md
 ```
-
----
-
-## ☁️ Despliegue en Azure Web App
-
-Este proyecto puede desplegarse automáticamente desde GitHub utilizando **Deployment Center** del portal de Azure:
-
-1. Ve a tu Web App en Azure
-2. Busca “Deployment Center”
-3. Selecciona GitHub como fuente
-4. Elige el repositorio y rama
-5. Asegúrate de tener el `startup command` correcto:
-
-```bash
-gunicorn app.main:app --workers 1 --worker-class uvicorn.workers.UvicornWorker
-```
-
-6. En la sección de `Configuration`, añade las variables de entorno del archivo `.env`
-
----
-
-## 🔒 Seguridad
-
-Recuerda **NO subir tu archivo `.env`** al repositorio. Puedes usar un archivo `.env.example` como referencia para el equipo.
-
----
-
-## 📄 Licencia
-
-MIT © 2025
 
 ---

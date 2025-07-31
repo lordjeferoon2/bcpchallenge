@@ -10,7 +10,7 @@ app = FastAPI(title="Customer Consolidation API")
 # Permitir CORS para Angular local
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],  # Puedes usar ["*"] en desarrollo
+    allow_origins=["*"],  # Puedes usar ["*"] en desarrollo
     allow_credentials=True,
     allow_methods=["*"],  # Métodos permitidos como "GET", "POST"
     allow_headers=["*"],  # Headers permitidos
