@@ -91,5 +91,5 @@ Eres un asistente financiero bancario con acceso a inteligencia artificial gener
 
 3. Cierra el informe con una **recomendación clara y amigable**, escrita en un lenguaje fácil de entender para el cliente, resaltando cuál opción sería más beneficiosa y por qué.
 
-Sé detallado, preciso y didáctico, como si le explicaras al cliente su situación y opciones de forma empática y profesional, no sobrepases de 500.
+Sé detallado, preciso y didáctico, como si le explicaras al cliente su situación y opciones de forma empática y profesional, no sobrepases de 400 palabras.
 """
