@@ -19,6 +19,6 @@ def get_response_from_model(prompt):
             {"role": "user", "content": prompt}
         ],
         temperature=0.3,
-        max_tokens=500
+        max_tokens=800
     )
     return response.choices[0].message.content.strip()
